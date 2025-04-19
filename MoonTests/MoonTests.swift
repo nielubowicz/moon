@@ -8,29 +8,24 @@
 import XCTest
 @testable import Moon
 
-final class MoonTests: XCTestCase {
-
+final class MoonPhaseResponseTests: XCTestCase {
+    var data: Data = Data()
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        let path = Bundle(for: type(of: self)).path(forResource: "TestJSON", ofType: "json") ?? ""
+        let pathURL = URL(fileURLWithPath: path)
+        self.data = try Data(contentsOf: pathURL)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    
+    func testPhases() {
+        do {
+            let response = try JSONDecoder().decode(MoonPhaseRangeResponse.self, from: data)
+            XCTAssertNotNil(response)
+            XCTAssertEqual(response.moonPhases["2024-09-01"], 0.95)
+            XCTAssertEqual(response.moonPhases["2024-09-02"], 0)
+            XCTAssertNil(response.moonPhases["2024-09-03"])
+        } catch {
+            print(error)
         }
+        
     }
-
 }
