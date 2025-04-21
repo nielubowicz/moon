@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @EnvironmentObject var networkManager: Network.NetworkManager
     
-    @State var viewModel: MoonViewModel?
+    @State var viewModel: MoonModel?
     
     var body: some View {
         if isProduction {

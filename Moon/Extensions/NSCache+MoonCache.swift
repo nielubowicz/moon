@@ -1,8 +1,8 @@
 import Foundation
 
 enum MoonCacheEntry {
-    case ready(MoonViewModel)
-    case loading(Task<MoonViewModel, Error>)
+    case ready(MoonModel)
+    case loading(Task<MoonModel, Error>)
 }
 
 final class MoonCacheEntryObject {
@@ -29,4 +29,10 @@ extension NSCache where KeyType == NSString, ObjectType == MoonCacheEntryObject 
             }
         }
     }
+}
+
+extension NSCache where KeyType == NSString, ObjectType == MoonCacheEntryObject {
+    
+    // TODO: Load data from Disk
+    
 }

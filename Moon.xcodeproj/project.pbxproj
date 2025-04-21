@@ -17,7 +17,7 @@
 		045514072CA235A70072221A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045514062CA235A70072221A /* API.swift */; };
 		045514092CA23A5D0072221A /* MoonPhaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045514082CA23A5D0072221A /* MoonPhaseResponse.swift */; };
 		045514112CA26ED10072221A /* TestJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = 045514102CA26ED10072221A /* TestJSON.json */; };
-		0476DE2F2DB3FD7A009ED2A3 /* MoonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476DE2E2DB3FD77009ED2A3 /* MoonViewModel.swift */; };
+		0476DE2F2DB3FD7A009ED2A3 /* MoonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476DE2E2DB3FD77009ED2A3 /* MoonModel.swift */; };
 		0476DE312DB3FD93009ED2A3 /* MoonShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476DE302DB3FD8E009ED2A3 /* MoonShadowView.swift */; };
 		0476DE332DB3FDC1009ED2A3 /* MoonShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476DE322DB3FDBF009ED2A3 /* MoonShadow.swift */; };
 		0476DE362DB40311009ED2A3 /* NSCache+MoonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0476DE352DB4030C009ED2A3 /* NSCache+MoonCache.swift */; };
@@ -60,7 +60,7 @@
 		045514062CA235A70072221A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		045514082CA23A5D0072221A /* MoonPhaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseResponse.swift; sourceTree = "<group>"; };
 		045514102CA26ED10072221A /* TestJSON.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestJSON.json; sourceTree = "<group>"; };
-		0476DE2E2DB3FD77009ED2A3 /* MoonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonViewModel.swift; sourceTree = "<group>"; };
+		0476DE2E2DB3FD77009ED2A3 /* MoonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonModel.swift; sourceTree = "<group>"; };
 		0476DE302DB3FD8E009ED2A3 /* MoonShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonShadowView.swift; sourceTree = "<group>"; };
 		0476DE322DB3FDBF009ED2A3 /* MoonShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonShadow.swift; sourceTree = "<group>"; };
 		0476DE352DB4030C009ED2A3 /* NSCache+MoonCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSCache+MoonCache.swift"; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		0476DE2D2DB3FD3A009ED2A3 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				0476DE2E2DB3FD77009ED2A3 /* MoonViewModel.swift */,
+				0476DE2E2DB3FD77009ED2A3 /* MoonModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -355,7 +355,7 @@
 			files = (
 				048943562DB184D600EC669A /* Moon.swift in Sources */,
 				0489434D2DB1811D00EC669A /* NetworkManager.swift in Sources */,
-				0476DE2F2DB3FD7A009ED2A3 /* MoonViewModel.swift in Sources */,
+				0476DE2F2DB3FD7A009ED2A3 /* MoonModel.swift in Sources */,
 				048943542DB1817900EC669A /* MoonPhaseRangeResponse.swift in Sources */,
 				045513DE2CA234840072221A /* ContentView.swift in Sources */,
 				045514072CA235A70072221A /* API.swift in Sources */,

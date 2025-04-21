@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct MoonShadowView: View {
-    let viewModel: MoonViewModel
+    let viewModel: MoonModel
     
     var body: some View {
         MoonShadow(phase: viewModel.phase)
@@ -20,7 +20,7 @@ struct MoonShadowView: View {
             Circle()
                 .fill(.white)
                 .frame(width: 200, height: 200)
-            MoonShadowView(viewModel: MoonViewModel(date: .now, phase: phase))
+            MoonShadowView(viewModel: MoonModel(date: .now, phase: phase))
                 .frame(width: 200, height: 200)
         }
         Spacer()

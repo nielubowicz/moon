@@ -1,6 +1,6 @@
 import Foundation
 
-struct MoonViewModel {
+struct MoonModel: Decodable {
     let date: Date
     let phase: Double
     
