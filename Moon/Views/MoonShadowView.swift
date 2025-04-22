@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MoonShadowView: View {
     let viewModel: MoonModel
-    
+
     var body: some View {
         MoonShadow(phase: viewModel.phase)
             .clipShape(Circle())
@@ -13,8 +13,8 @@ struct MoonShadowView: View {
 
 #Preview {
     @Previewable
-    @State var phase: Double = 0.001
-    
+    @State var phase = 0.001
+
     VStack {
         ZStack {
             Circle()

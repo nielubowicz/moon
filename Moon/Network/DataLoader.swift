@@ -18,27 +18,27 @@ extension Network {
                         throw NetworkError.urlError(URLError(URLError.Code(rawValue: httpResponse.statusCode)))
                     }
                 }
-                
+
                 return try decode(data)
             } catch let error as URLError {
                 throw NetworkError.urlError(error)
             } catch let error as DecodingError {
                 throw NetworkError.decodingError(error)
-            } 
+            }
         }
-        
+
         private static var formatter: DateFormatter {
             let formatter = DateFormatter()
             formatter.dateFormat = "yyyy-MM-dd"
             return formatter
         }
-        
+
         private static var decoder: JSONDecoder {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .formatted(Self.formatter)
             return decoder
         }
-        
+
         private func decode<T: Decodable>(_ data: Data) throws -> T {
             return try Self.decoder.decode(T.self, from: data)
         }

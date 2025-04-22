@@ -18,7 +18,7 @@ extension Network {
     actor NetworkManager: NSObject, NetworkProvider {
         let cache: NSCache<NSString, MoonCacheEntryObject>
         let dataLoader: DataLoadingProvider
-        
+
         init(
             cache: NSCache<NSString, MoonCacheEntryObject> = .init(),
             dataLoader: DataLoadingProvider = DataLoader()
@@ -26,25 +26,25 @@ extension Network {
             self.cache = cache
             self.dataLoader = dataLoader
         }
-        
+
         func getToday() async throws -> MoonModel? {
             let date = Date.now
             if let cached = cache[date] {
                 switch cached {
-                case .ready(let value):
+                case let .ready(value):
                     return value
-                case .loading(let task):
+                case let .loading(task):
                     return try? await task.value
                 }
             }
-            
+
             let task = Task<MoonModel, Error> {
                 let response: MoonPhaseResponse = try await dataLoader.loadData(from: Network.API.today)
                 return MoonModel(date: date, phase: response.moonPhase)
             }
-            
+
             cache[date] = .loading(task)
-            
+
             do {
                 let viewModel = try await task.value
                 cache[date] = .ready(viewModel)
@@ -54,7 +54,7 @@ extension Network {
                 throw error
             }
         }
-        
+
         func getDateRange(from: Date, to: Date) async throws -> [MoonModel]? {
             var dates = [Date]()
             Calendar
@@ -63,33 +63,33 @@ extension Network {
                     startingAfter: from,
                     matching: DateComponents(hour: 0),
                     matchingPolicy: .nextTime,
-                    direction: .forward) { result, exactMatch, stop in
-                        guard let result = result, result < to else { stop = true; return }
-                        dates.append(result)
-                    }
-            
+                    direction: .forward
+                ) { result, _, stop in
+                    guard let result = result, result < to else { stop = true; return }
+                    dates.append(result)
+                }
+
             let cachedModels: [MoonModel] = await dates
                 .asyncCompactMap {
                     guard let cached = self.cache[$0] else { return nil }
                     switch cached {
-                    case .ready(let value):
+                    case let .ready(value):
                         return value
-                    case .loading(let task):
+                    case let .loading(task):
                         return try? await task.value
                     }
                 }
-            
-            
+
             // All dates found in cache, return
             if cachedModels.count == dates.count {
                 return cachedModels.sorted(by: <)
             }
-                    
+
             let task = Task<[MoonModel], Error> {
                 let response: MoonPhaseRangeResponse = try await dataLoader.loadData(from: Network.API.dateRange(from: from, to: to))
                 return response.moonPhases.map { MoonModel(date: $0.key, phase: $0.value) }
             }
-            
+
             do {
                 let viewModels = try await task.value
                 viewModels.forEach { self.cache[$0.date] = .ready($0) }
@@ -101,4 +101,3 @@ extension Network {
         }
     }
 }
-

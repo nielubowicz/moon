@@ -3,7 +3,7 @@ import Foundation
 struct MoonModel: Hashable {
     let date: Date
     let phase: Double
-    
+
     var formattedDate: String {
         date.formatted(date: .long, time: .omitted)
     }
@@ -27,8 +27,8 @@ extension MoonModel: Comparable {
     }
 }
 
-
 // MARK: Preview Data
+
 extension MoonModel {
     static let fullCycle = [
         MoonModel(date: .now, phase: 0),
@@ -58,9 +58,9 @@ extension MoonModel {
         MoonModel(date: .now, phase: 0.82),
         MoonModel(date: .now, phase: 0.86),
         MoonModel(date: .now, phase: 0.90),
-        MoonModel(date: .now, phase: 1)
+        MoonModel(date: .now, phase: 1),
     ]
-    
+
     static let terseCycle = [
         MoonModel(date: .now, phase: 0),
         MoonModel(date: .now, phase: 0.25),
@@ -68,7 +68,7 @@ extension MoonModel {
         MoonModel(date: .now, phase: 0.75),
         MoonModel(date: .now, phase: 1),
     ]
-    
+
     static func arbitrartCycle(phase: Double) -> MoonModel {
         MoonModel(date: .now, phase: phase)
     }

@@ -7,7 +7,7 @@ enum MoonCacheEntry {
 
 final class MoonCacheEntryObject {
     let entry: MoonCacheEntry
-    
+
     init(entry: MoonCacheEntry) {
         self.entry = entry
     }
@@ -32,7 +32,5 @@ extension NSCache where KeyType == NSString, ObjectType == MoonCacheEntryObject 
 }
 
 extension NSCache where KeyType == NSString, ObjectType == MoonCacheEntryObject {
-    
     // TODO: Load data from Disk
-    
 }
