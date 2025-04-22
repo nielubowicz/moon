@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		045052992DB685A700F2BEE3 /* Sequence+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045052982DB685A300F2BEE3 /* Sequence+Async.swift */; };
+		0450529B2DB685CB00F2BEE3 /* PreviewNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */; };
+		0450529D2DB685F400F2BEE3 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529C2DB685F000F2BEE3 /* DataLoader.swift */; };
+		045052A02DB6862100F2BEE3 /* PreviewDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529F2DB6861E00F2BEE3 /* PreviewDataLoader.swift */; };
+		045052A22DB6AC0500F2BEE3 /* AnimatedMoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045052A12DB6AC0200F2BEE3 /* AnimatedMoon.swift */; };
 		045513DC2CA234840072221A /* MoonApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045513DB2CA234840072221A /* MoonApp.swift */; };
 		045513DE2CA234840072221A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045513DD2CA234840072221A /* ContentView.swift */; };
 		045513E02CA234850072221A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045513DF2CA234850072221A /* Assets.xcassets */; };
@@ -47,6 +52,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		045052982DB685A300F2BEE3 /* Sequence+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Async.swift"; sourceTree = "<group>"; };
+		0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewNetworkManager.swift; sourceTree = "<group>"; };
+		0450529C2DB685F000F2BEE3 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
+		0450529F2DB6861E00F2BEE3 /* PreviewDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataLoader.swift; sourceTree = "<group>"; };
+		045052A12DB6AC0200F2BEE3 /* AnimatedMoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedMoon.swift; sourceTree = "<group>"; };
 		045513D82CA234840072221A /* Moon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		045513DB2CA234840072221A /* MoonApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonApp.swift; sourceTree = "<group>"; };
 		045513DD2CA234840072221A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +107,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0450529E2DB6860F00F2BEE3 /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				0450529F2DB6861E00F2BEE3 /* PreviewDataLoader.swift */,
+				0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */,
+			);
+			path = Previews;
+			sourceTree = "<group>";
+		};
 		045513CF2CA234840072221A = {
 			isa = PBXGroup;
 			children = (
@@ -162,10 +181,12 @@
 		045514052CA2359C0072221A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0450529E2DB6860F00F2BEE3 /* Previews */,
 				048943502DB1815100EC669A /* Models */,
+				045514062CA235A70072221A /* API.swift */,
+				0450529C2DB685F000F2BEE3 /* DataLoader.swift */,
 				0489434E2DB1813300EC669A /* Network.swift */,
 				0489434C2DB1811A00EC669A /* NetworkManager.swift */,
-				045514062CA235A70072221A /* API.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -198,6 +219,7 @@
 			children = (
 				0476DE342DB3FE63009ED2A3 /* Shapes */,
 				0476DE302DB3FD8E009ED2A3 /* MoonShadowView.swift */,
+				045052A12DB6AC0200F2BEE3 /* AnimatedMoon.swift */,
 				048943552DB184D000EC669A /* Moon.swift */,
 			);
 			path = Views;
@@ -206,6 +228,7 @@
 		048943492DB180E900EC669A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				045052982DB685A300F2BEE3 /* Sequence+Async.swift */,
 				0476DE352DB4030C009ED2A3 /* NSCache+MoonCache.swift */,
 				0489434A2DB180FF00EC669A /* FormatStyle+NetworkFormat.swift */,
 			);
@@ -310,6 +333,9 @@
 				Base,
 			);
 			mainGroup = 045513CF2CA234840072221A;
+			packageReferences = (
+				045052A32DB7CC4E00F2BEE3 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			productRefGroup = 045513D92CA234840072221A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -354,17 +380,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				048943562DB184D600EC669A /* Moon.swift in Sources */,
+				045052A22DB6AC0500F2BEE3 /* AnimatedMoon.swift in Sources */,
 				0489434D2DB1811D00EC669A /* NetworkManager.swift in Sources */,
 				0476DE2F2DB3FD7A009ED2A3 /* MoonModel.swift in Sources */,
 				048943542DB1817900EC669A /* MoonPhaseRangeResponse.swift in Sources */,
 				045513DE2CA234840072221A /* ContentView.swift in Sources */,
+				0450529D2DB685F400F2BEE3 /* DataLoader.swift in Sources */,
 				045514072CA235A70072221A /* API.swift in Sources */,
 				045513DC2CA234840072221A /* MoonApp.swift in Sources */,
 				045514092CA23A5D0072221A /* MoonPhaseResponse.swift in Sources */,
 				048943522DB1816200EC669A /* MoonPhaseDay.swift in Sources */,
 				0476DE312DB3FD93009ED2A3 /* MoonShadowView.swift in Sources */,
+				045052992DB685A700F2BEE3 /* Sequence+Async.swift in Sources */,
 				0489434F2DB1813600EC669A /* Network.swift in Sources */,
+				045052A02DB6862100F2BEE3 /* PreviewDataLoader.swift in Sources */,
 				0476DE362DB40311009ED2A3 /* NSCache+MoonCache.swift in Sources */,
+				0450529B2DB685CB00F2BEE3 /* PreviewNetworkManager.swift in Sources */,
 				0476DE332DB3FDC1009ED2A3 /* MoonShadow.swift in Sources */,
 				0489434B2DB1810400EC669A /* FormatStyle+NetworkFormat.swift in Sources */,
 			);
@@ -688,6 +719,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		045052A32DB7CC4E00F2BEE3 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.59.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 045513D02CA234840072221A /* Project object */;
 }

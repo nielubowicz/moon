@@ -7,36 +7,65 @@
 
 import SwiftUI
 
+struct NetworkServiceKey: EnvironmentKey {
+    static let defaultValue: any Network.NetworkProvider = Network.PreviewNetworkManager()
+}
+
+extension EnvironmentValues {
+    var networkProvider: any Network.NetworkProvider {
+        get { self[NetworkServiceKey.self] }
+        set { self[NetworkServiceKey.self] = newValue }
+    }
+}
+
 struct ContentView: View {
-    @EnvironmentObject var networkManager: Network.NetworkManager
+    @Environment(\.networkProvider) var networkManager
     
     @State var viewModel: MoonModel?
+    @State var viewModels = [MoonModel]()
+    @State var index = 0
+    
+    @State var showPicker = false
+    @State var selectedDate: Date = .now
     
     var body: some View {
         if isProduction {
             VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundStyle(.tint)
-                Text("Hello, world!")
+                if viewModels.count > 0 {
+                    AnimatedMoon(models: viewModels)
+                }
+                Spacer()
+                Button("Select Date") {
+                    showPicker = true
+                }
             }
             .padding()
             .onAppear() {
-                Task {
-                    viewModel = try? await networkManager.getToday()
-                    print(viewModel)
-                    
-                    let groupedData = await networkManager.getDateRange(
-                        from: Date.now,
-                        to: Date.now.addingTimeInterval(86400)
-                    )
-                    print(groupedData)
-                }
+                requestMoonModels()
             }
             .overlay {
-                if let viewModel {
-                    Moon(viewModel: viewModel)
+                if showPicker {
+                    DatePicker("moon date", selection: $selectedDate)
+                        .datePickerStyle(.graphical)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
+            }
+            .onChange(of: selectedDate) { oldValue, newValue in
+                showPicker = false
+                requestMoonModels()
+            }
+        }
+    }
+    
+    private func requestMoonModels() {
+        Task {
+            if let models = try? await networkManager.getDateRange(
+                from: .now,
+                to: selectedDate
+            ) {
+                viewModels = models
+                print(viewModels)
             }
         }
     }
@@ -46,10 +75,7 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        let manager = Network.PreviewNetworkManager()
-        ContentView()
-            .environmentObject(manager)
-    }
+#Preview {
+    ContentView()
+        .environment(\.networkProvider, Network.PreviewNetworkManager())
 }

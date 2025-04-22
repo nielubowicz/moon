@@ -23,6 +23,7 @@ struct Moon: View {
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundStyle(.white)
+                .fixedSize(horizontal: true, vertical: false)
         }
         .frame(maxWidth: .infinity)
         .background(.black)
@@ -45,52 +46,36 @@ struct Moon: View {
 
 #Preview {
     HStack {
-        Moon(viewModel: MoonModel(date: .now, phase: 0))
-        Moon(viewModel: MoonModel(date: .now, phase: 0.25))
-        Moon(viewModel: MoonModel(date: .now, phase: 0.5))
-        Moon(viewModel: MoonModel(date: .now, phase: 0.75))
-        Moon(viewModel: MoonModel(date: .now, phase: 1))
+        ForEach(MoonModel.terseCycle) { model in
+            Moon(viewModel: model)
+        }
     }
 }
 
 #Preview {
     VStack {
         HStack {
-            Moon(viewModel: MoonModel(date: .now, phase: 0))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.05))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.08))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.12))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.18))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.24))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.25))
+            ForEach(MoonModel.fullCycle[0...6]) { model in
+                Moon(viewModel: model)
+            }
         }
         HStack {
-            Moon(viewModel: MoonModel(date: .now, phase: 0.30))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.33))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.36))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.39))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.42))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.45))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.48))
+            ForEach(MoonModel.fullCycle[7...13]) { model in
+                Moon(viewModel: model)
+            }
         }
         HStack {
-            Moon(viewModel: MoonModel(date: .now, phase: 0.51))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.54))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.57))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.60))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.63))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.66))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.69))
+            ForEach(MoonModel.fullCycle[14...20]) { model in
+                Moon(viewModel: model)
+            }
         }
         
         HStack {
-            Moon(viewModel: MoonModel(date: .now, phase: 0.7))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.75))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.78))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.82))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.86))
-            Moon(viewModel: MoonModel(date: .now, phase: 0.90))
-            Moon(viewModel: MoonModel(date: .now, phase: 1))
+            ForEach(MoonModel.fullCycle[21...27]) { model in
+                Moon(viewModel: model)
+            }
         }
     }
+    .padding()
+    .fixedSize(horizontal: false, vertical: true)
 }

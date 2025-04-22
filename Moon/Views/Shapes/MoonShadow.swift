@@ -1,7 +1,12 @@
 import SwiftUI
 
 struct MoonShadow: Shape {
-    let phase: Double
+    var phase: Double
+    
+    var animatableData: Double {
+        get { phase }
+        set { phase = newValue }
+    }
     
     enum Side {
         case left(phase: Double)

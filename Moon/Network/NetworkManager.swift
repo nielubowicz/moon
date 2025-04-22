@@ -8,57 +8,21 @@ extension Network {
 }
 
 extension Network {
-    protocol NetworkProvider {
+    protocol NetworkProvider: ObservableObject {
         func getToday() async throws -> MoonModel?
         func getDateRange(from: Date, to: Date) async throws -> [MoonModel]?
     }
 }
 
 extension Network {
-    protocol DataLoadingProvider {
-        func loadData<T: Decodable>(from requestType: Network.API) async throws -> T
-    }
-}
-
-extension Network {
-    actor DataLoader: DataLoadingProvider {
-        func loadData<T: Decodable>(from requestType: Network.API) async throws -> T {
-            let request = URLRequest(url: requestType.toURL())
-            do {
-                let (data, _) = try await URLSession.shared.data(for: request)
-                // TODO: check for errors in response
-                return try decode(data)
-            } catch {
-                // TODO: Handle error internally
-                print(error)
-                throw error
-            }
-        }
-        
-        private static var formatter: DateFormatter {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy-MM-dd"
-            return formatter
-        }
-        
-        private static var decoder: JSONDecoder {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .formatted(Self.formatter)
-            return decoder
-        }
-        
-        private func decode<T: Decodable>(_ data: Data) throws -> T {
-            return try Self.decoder.decode(T.self, from: data)
-        }
-    }
-}
-
-extension Network {
-    actor NetworkManager: ObservableObject, NetworkProvider {
+    actor NetworkManager: NSObject, NetworkProvider {
         let cache: NSCache<NSString, MoonCacheEntryObject>
         let dataLoader: DataLoadingProvider
         
-        init(cache: NSCache<NSString, MoonCacheEntryObject> = .init(), dataLoader: DataLoadingProvider) {
+        init(
+            cache: NSCache<NSString, MoonCacheEntryObject> = .init(),
+            dataLoader: DataLoadingProvider = DataLoader()
+        ) {
             self.cache = cache
             self.dataLoader = dataLoader
         }
@@ -92,7 +56,6 @@ extension Network {
         }
         
         func getDateRange(from: Date, to: Date) async throws -> [MoonModel]? {
-            let dateRange = from...to
             var dates = [Date]()
             Calendar
                 .autoupdatingCurrent
@@ -119,7 +82,7 @@ extension Network {
             
             // All dates found in cache, return
             if cachedModels.count == dates.count {
-                return cachedModels
+                return cachedModels.sorted(by: <)
             }
                     
             let task = Task<[MoonModel], Error> {
@@ -130,7 +93,7 @@ extension Network {
             do {
                 let viewModels = try await task.value
                 viewModels.forEach { self.cache[$0.date] = .ready($0) }
-                return viewModels
+                return viewModels.sorted(by: <)
             } catch {
                 dates.forEach { self.cache[$0] = nil }
                 throw error
@@ -139,57 +102,3 @@ extension Network {
     }
 }
 
-extension Network {
-    actor PreviewNetworkManager: Observable, ObservableObject, NetworkProvider {
-        func getToday() async -> MoonModel? {
-            MoonModel(date: .now, phase: 0.5)
-        }
-        
-        func getDateRange(from: Date, to: Date) async -> [MoonModel]? {
-            [
-                MoonModel(date: .now, phase: 0.5),
-                MoonModel(date: .now, phase: 0.6),
-                MoonModel(date: .now, phase: 0.7)
-            ]
-        }
-    }
-}
-
-extension Sequence {
-    func asyncMap<T>(_ transform: @escaping (Element) async -> T) async -> [T] {
-        return await withTaskGroup(of: T.self) { group in
-            var transformedElements = [T]()
-            
-            for element in self {
-                group.addTask {
-                    return await transform(element)
-                }
-            }
-            
-            for await transformedElement in group {
-                transformedElements.append(transformedElement)
-            }
-            
-            return transformedElements
-        }
-    }
-    
-    func asyncCompactMap<T>(_ transform: @escaping (Element) async -> T?) async -> [T] {
-        return await withTaskGroup(of: T?.self) { group in
-            var transformedElements = [T]()
-
-            for element in self {
-                group.addTask {
-                    return await transform(element)
-                }
-            }
-
-            for await transformedElement in group {
-                guard let transformedElement = transformedElement else { continue }
-                transformedElements.append(transformedElement)
-            }
-
-            return transformedElements
-        }
-    }
-}

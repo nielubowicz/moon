@@ -12,7 +12,7 @@ struct MoonApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(Network.NetworkManager())
+                .environment(\.networkProvider, Network.NetworkManager())
         }
     }
 }
