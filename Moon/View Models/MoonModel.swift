@@ -4,6 +4,10 @@ struct MoonModel: Hashable {
     let date: Date
     let phase: Double
 
+    var formattedPhase: String {
+        (phase).formatted(.percent) + ", " + (phase > 0.5 ? "waning" : "waxing")
+    }
+    
     var formattedDate: String {
         date.formatted(date: .long, time: .omitted)
     }

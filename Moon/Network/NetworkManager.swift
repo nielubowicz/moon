@@ -10,6 +10,7 @@ extension Network {
 extension Network {
     protocol NetworkProvider: ObservableObject {
         func getToday() async throws -> MoonModel?
+        func getDate(_ date: Date) async throws -> MoonModel?
         func getDateRange(from: Date, to: Date) async throws -> [MoonModel]?
     }
 }
@@ -18,7 +19,7 @@ extension Network {
     actor NetworkManager: NSObject, NetworkProvider {
         let cache: NSCache<NSString, MoonCacheEntryObject>
         let dataLoader: DataLoadingProvider
-
+        
         init(
             cache: NSCache<NSString, MoonCacheEntryObject> = .init(),
             dataLoader: DataLoadingProvider = DataLoader()
@@ -26,9 +27,12 @@ extension Network {
             self.cache = cache
             self.dataLoader = dataLoader
         }
-
+        
         func getToday() async throws -> MoonModel? {
-            let date = Date.now
+            try await getDate(.now)
+        }
+        
+        func getDate(_ date: Date) async throws -> MoonModel? {
             if let cached = cache[date] {
                 switch cached {
                 case let .ready(value):
@@ -37,14 +41,19 @@ extension Network {
                     return try? await task.value
                 }
             }
-
+            
             let task = Task<MoonModel, Error> {
-                let response: MoonPhaseResponse = try await dataLoader.loadData(from: Network.API.today)
-                return MoonModel(date: date, phase: response.moonPhase)
+                let response: MoonPhaseRangeResponse = try await dataLoader.loadData(from: Network.API.date(on: date))
+                guard
+                    let moonModel = response.moonPhases.map({ MoonModel(date: $0.key, phase: $0.value) }).first
+                else {
+                    throw NetworkError.decodingError(DecodingError.dataCorrupted(DecodingError.Context(codingPath: [], debugDescription: "No moon model found")))
+                }
+                return moonModel
             }
-
+            
             cache[date] = .loading(task)
-
+            
             do {
                 let viewModel = try await task.value
                 cache[date] = .ready(viewModel)
@@ -56,19 +65,8 @@ extension Network {
         }
 
         func getDateRange(from: Date, to: Date) async throws -> [MoonModel]? {
-            var dates = [Date]()
-            Calendar
-                .autoupdatingCurrent
-                .enumerateDates(
-                    startingAfter: from,
-                    matching: DateComponents(hour: 0),
-                    matchingPolicy: .nextTime,
-                    direction: .forward
-                ) { result, _, stop in
-                    guard let result = result, result < to else { stop = true; return }
-                    dates.append(result)
-                }
-
+            let dates = Calendar.autoupdatingCurrent.enumerateDatesBetween(from, andEnd: to)
+            
             let cachedModels: [MoonModel] = await dates
                 .asyncCompactMap {
                     guard let cached = self.cache[$0] else { return nil }

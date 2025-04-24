@@ -6,7 +6,7 @@ extension Network {
     // TODO: Get user zipcode ? or default to one
 
     enum API {
-        case today
+        case date(on: Date)
         case dateRange(from: Date, to: Date)
         #if canImport(MoonTests)
             case arbitrary(url: URL)
@@ -14,7 +14,8 @@ extension Network {
         func toURL() -> URL {
             var url = Network.baseURL
             switch self {
-            case .today: {}()
+            case let .date(date):
+                url.append(component: date.formatted(.networkFormat))
             case let .dateRange(fromDate, toDate):
                 url.append(component: fromDate.formatted(.networkFormat))
                 url.append(component: toDate.formatted(.networkFormat))
@@ -22,7 +23,13 @@ extension Network {
                 case let .arbitrary(url): return url
             #endif
             }
-            return url.appending(queryItems: [URLQueryItem(name: "key", value: Network.apiKey)])
+            return url.appending(
+                queryItems: [
+                    URLQueryItem(name: "key", value: Network.apiKey),
+                    URLQueryItem(name: "include", value: "days"),
+                    URLQueryItem(name: "elements", value: "datetime,moonphase")
+                ],
+            )
         }
     }
 }
@@ -30,8 +37,8 @@ extension Network {
 extension Network.API: Hashable {
     func hash(into hasher: inout Hasher) {
         switch self {
-        case .today:
-            hasher.combine(UUID())
+        case let .date(date):
+            hasher.combine(date)
         case let .dateRange(beginning, end):
             hasher.combine(beginning)
             hasher.combine(end)

@@ -4,10 +4,6 @@ import SwiftUI
 struct Moon: View {
     let viewModel: MoonModel
 
-    init(viewModel: MoonModel) {
-        self.viewModel = viewModel
-    }
-
     var body: some View {
         VStack {
             Spacer()
@@ -19,11 +15,17 @@ struct Moon: View {
 
             Spacer()
 
+            Text(viewModel.formattedPhase)
+                .font(.title3)
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+                .padding(.bottom)
             Text(viewModel.formattedDate)
                 .font(.title2)
                 .fontWeight(.bold)
                 .foregroundStyle(.white)
                 .fixedSize(horizontal: true, vertical: false)
+            Spacer()
         }
         .frame(maxWidth: .infinity)
         .background(.black)

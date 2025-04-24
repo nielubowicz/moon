@@ -16,7 +16,7 @@
 		045513DE2CA234840072221A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045513DD2CA234840072221A /* ContentView.swift */; };
 		045513E02CA234850072221A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045513DF2CA234850072221A /* Assets.xcassets */; };
 		045513E32CA234850072221A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 045513E22CA234850072221A /* Preview Assets.xcassets */; };
-		045513ED2CA234850072221A /* MoonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045513EC2CA234850072221A /* MoonTests.swift */; };
+		045513ED2CA234850072221A /* MoonPhaseResponseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045513EC2CA234850072221A /* MoonPhaseResponseTests.swift */; };
 		045513F72CA234850072221A /* MoonUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045513F62CA234850072221A /* MoonUITests.swift */; };
 		045513F92CA234850072221A /* MoonUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045513F82CA234850072221A /* MoonUITestsLaunchTests.swift */; };
 		045514072CA235A70072221A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045514062CA235A70072221A /* API.swift */; };
@@ -32,6 +32,9 @@
 		048943522DB1816200EC669A /* MoonPhaseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943512DB1816000EC669A /* MoonPhaseDay.swift */; };
 		048943542DB1817900EC669A /* MoonPhaseRangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943532DB1817500EC669A /* MoonPhaseRangeResponse.swift */; };
 		048943562DB184D600EC669A /* Moon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943552DB184D000EC669A /* Moon.swift */; };
+		04F36D1E2DB84E1A002D620E /* DataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */; };
+		04F36D202DB84F24002D620E /* Calendar+DatesBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F36D1F2DB84F1F002D620E /* Calendar+DatesBetween.swift */; };
+		04F36D222DB9DE75002D620E /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F36D212DB9DE6F002D620E /* NetworkManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +66,7 @@
 		045513DF2CA234850072221A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		045513E22CA234850072221A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		045513E82CA234850072221A /* MoonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		045513EC2CA234850072221A /* MoonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonTests.swift; sourceTree = "<group>"; };
+		045513EC2CA234850072221A /* MoonPhaseResponseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseResponseTests.swift; sourceTree = "<group>"; };
 		045513F22CA234850072221A /* MoonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MoonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		045513F62CA234850072221A /* MoonUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonUITests.swift; sourceTree = "<group>"; };
 		045513F82CA234850072221A /* MoonUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -80,6 +83,9 @@
 		048943512DB1816000EC669A /* MoonPhaseDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseDay.swift; sourceTree = "<group>"; };
 		048943532DB1817500EC669A /* MoonPhaseRangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseRangeResponse.swift; sourceTree = "<group>"; };
 		048943552DB184D000EC669A /* Moon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moon.swift; sourceTree = "<group>"; };
+		04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderTests.swift; sourceTree = "<group>"; };
+		04F36D1F2DB84F1F002D620E /* Calendar+DatesBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DatesBetween.swift"; sourceTree = "<group>"; };
+		04F36D212DB9DE6F002D620E /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,8 +169,10 @@
 		045513EB2CA234850072221A /* MoonTests */ = {
 			isa = PBXGroup;
 			children = (
+				04F36D212DB9DE6F002D620E /* NetworkManagerTests.swift */,
+				04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */,
 				045514102CA26ED10072221A /* TestJSON.json */,
-				045513EC2CA234850072221A /* MoonTests.swift */,
+				045513EC2CA234850072221A /* MoonPhaseResponseTests.swift */,
 			);
 			path = MoonTests;
 			sourceTree = "<group>";
@@ -228,6 +236,7 @@
 		048943492DB180E900EC669A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				04F36D1F2DB84F1F002D620E /* Calendar+DatesBetween.swift */,
 				045052982DB685A300F2BEE3 /* Sequence+Async.swift */,
 				0476DE352DB4030C009ED2A3 /* NSCache+MoonCache.swift */,
 				0489434A2DB180FF00EC669A /* FormatStyle+NetworkFormat.swift */,
@@ -389,6 +398,7 @@
 				045514072CA235A70072221A /* API.swift in Sources */,
 				045513DC2CA234840072221A /* MoonApp.swift in Sources */,
 				045514092CA23A5D0072221A /* MoonPhaseResponse.swift in Sources */,
+				04F36D202DB84F24002D620E /* Calendar+DatesBetween.swift in Sources */,
 				048943522DB1816200EC669A /* MoonPhaseDay.swift in Sources */,
 				0476DE312DB3FD93009ED2A3 /* MoonShadowView.swift in Sources */,
 				045052992DB685A700F2BEE3 /* Sequence+Async.swift in Sources */,
@@ -405,7 +415,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				045513ED2CA234850072221A /* MoonTests.swift in Sources */,
+				04F36D222DB9DE75002D620E /* NetworkManagerTests.swift in Sources */,
+				04F36D1E2DB84E1A002D620E /* DataLoaderTests.swift in Sources */,
+				045513ED2CA234850072221A /* MoonPhaseResponseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,11 @@ extension EnvironmentValues {
     }
 }
 
+
+// TODO: Add core data to persist Moon Data between sessions
+// TODO: Add location picking
+// TODO: Remove saved data if location changes
+// TODO: Add event system
 struct ContentView: View {
     @Environment(\.networkProvider) var networkManager
 
@@ -48,7 +53,6 @@ struct ContentView: View {
                     DatePicker("moon date", selection: $selectedDate)
                         .datePickerStyle(.graphical)
                         .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }
             .onChange(of: selectedDate) { _, _ in
@@ -60,11 +64,8 @@ struct ContentView: View {
 
     private func requestMoonModels() {
         Task {
-            if let models = try? await networkManager.getDateRange(
-                from: .now,
-                to: selectedDate
-            ) {
-                viewModels = models
+            if let model = try? await networkManager.getDate(selectedDate) {
+                viewModels = [model]
                 print(viewModels)
             }
         }
