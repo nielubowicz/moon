@@ -145,6 +145,7 @@
 		045513DA2CA234840072221A /* Moon */ = {
 			isa = PBXGroup;
 			children = (
+				04F36D232DBA97D9002D620E /* Resources */,
 				0476DE2D2DB3FD3A009ED2A3 /* View Models */,
 				048943482DB180E100EC669A /* Views */,
 				0455140A2CA2652B0072221A /* Utilities */,
@@ -252,6 +253,13 @@
 				045514082CA23A5D0072221A /* MoonPhaseResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		04F36D232DBA97D9002D620E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -575,8 +583,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moon/Preview Content\"";
+				DEVELOPMENT_TEAM = 9RH4L8S898;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Moon uses your location to determine the correct moon phase";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -603,8 +613,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moon/Preview Content\"";
+				DEVELOPMENT_TEAM = 9RH4L8S898;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Moon uses your location to determine the correct moon phase";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

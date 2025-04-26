@@ -6,10 +6,18 @@ extension Network {
     }
 }
 
+import SwiftUI
+
 extension Network {
     actor DataLoader: DataLoadingProvider {
+//        let locationManager: LocationManager
+//        
+//        init(locationManager: LocationManager) {
+//            self.locationManager = locationManager
+//        }
+//        
         func loadData<T: Decodable>(from requestType: Network.API) async throws -> T {
-            let request = URLRequest(url: requestType.toURL())
+            let request = URLRequest(url: requestType.toURL(LocationManager.shared.currentZipCode))
             do {
                 let (data, response) = try await URLSession.shared.data(for: request)
                 if let httpResponse = response as? HTTPURLResponse {

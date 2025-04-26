@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct MoonApp: App {
@@ -13,6 +14,10 @@ struct MoonApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.networkProvider, Network.NetworkManager())
+                .modelContainer(for: MoonModel.self)
+                .task {
+                    Network.LocationManager.shared.beginUpdates()
+                }
         }
     }
 }

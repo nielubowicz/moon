@@ -1,8 +1,9 @@
+import SwiftUI
 import Foundation
 
 extension Network {
     private static let apiKey = "PZ3PJAZ9AQZ8BSZUNYJ78PZSD"
-    private static let baseURL = URL(string: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/32601")!
+    private static let baseURL = URL(string: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline")!
     // TODO: Get user zipcode ? or default to one
 
     enum API {
@@ -11,8 +12,11 @@ extension Network {
         #if canImport(MoonTests)
             case arbitrary(url: URL)
         #endif
-        func toURL() -> URL {
+        
+        func toURL(_ withZipCode: String) -> URL {
             var url = Network.baseURL
+            url.append(components: withZipCode)
+            
             switch self {
             case let .date(date):
                 url.append(component: date.formatted(.networkFormat))
@@ -46,6 +50,79 @@ extension Network.API: Hashable {
             case let .arbitrary(url):
                 hasher.combine(url)
         #endif
+        }
+    }
+}
+
+import CoreLocation
+
+extension Network {
+    class LocationManager: NSObject, CLLocationManagerDelegate, ObservableObject {
+        private let manager = CLLocationManager()
+        private let geocoder = CLGeocoder()
+        
+        @AppStorage("currentZipCode") private(set) var currentZipCode: String = "" {
+            willSet {
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
+            }
+        }
+        
+        private static var _shared: LocationManager = LocationManager()
+        static var shared: LocationManager {
+            return _shared
+        }
+        
+        private override init() {
+            super.init()
+        }
+        
+        func beginUpdates() {
+            manager.delegate = self
+            switch manager.authorizationStatus {
+            case .notDetermined:
+                manager.requestWhenInUseAuthorization()
+            case .authorizedWhenInUse,
+                    .authorizedAlways:
+                manager.requestLocation()
+            case .denied,
+                    .restricted:
+                print("Location services not enabled")
+            default:
+                print("Unknown CLLocationManager authorization status: \(manager.authorizationStatus)")
+            }
+        }
+    
+        func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+            switch manager.authorizationStatus {
+            case .notDetermined:
+                manager.requestWhenInUseAuthorization()
+            case .authorizedWhenInUse,
+                    .authorizedAlways:
+                manager.requestLocation()
+            case .denied,
+                    .restricted:
+                print("Location services not enabled")
+            default:
+                print("Unknown CLLocationManager authorization status: \(manager.authorizationStatus)")
+            }
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            Task {
+                guard let location = locations.last else { return }
+                do {
+                    let placemark = try await geocoder.reverseGeocodeLocation(location).last
+                    self.currentZipCode = placemark?.postalCode ?? ""
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: any Error) {
+            print(error)
         }
     }
 }

@@ -1,23 +1,41 @@
 import Foundation
+import SwiftData
 
-struct MoonModel: Hashable {
-    let date: Date
-    let phase: Double
+@Model
+final class MoonModel: Hashable, Identifiable {
+    var id: UUID
+    var date: Date
+    var phase: Double
 
+    init(id: UUID = UUID(), date: Date, phase: Double) {
+        self.id = id
+        self.date = date
+        self.phase = phase
+    }
+    
+    var debugDescription: String {
+        "MoonModel(\(id))[\(formattedDate)]: \(formattedPhase)"
+    }
+    
     var formattedPhase: String {
-        (phase).formatted(.percent) + ", " + (phase > 0.5 ? "waning" : "waxing")
+        if phase <= 0.5 {
+            return (phase * 2).formatted(.percent) + (phase < 0.5 ? ", Waxing" : ", Full Moon")
+        } else {
+            return (2 * (1 - phase)).formatted(.percent) + ", Waning"
+        }
     }
     
     var formattedDate: String {
         date.formatted(date: .long, time: .omitted)
     }
-}
-
-extension MoonModel: Identifiable {
-    var id: UUID {
-        UUID()
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(formattedDate)
+        hasher.combine(phase)
     }
 }
+
+extension MoonModel: Sendable {}
 
 extension MoonModel: Equatable {
     static func == (lhs: MoonModel, rhs: MoonModel) -> Bool {
