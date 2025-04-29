@@ -32,6 +32,7 @@
 		048943522DB1816200EC669A /* MoonPhaseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943512DB1816000EC669A /* MoonPhaseDay.swift */; };
 		048943542DB1817900EC669A /* MoonPhaseRangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943532DB1817500EC669A /* MoonPhaseRangeResponse.swift */; };
 		048943562DB184D600EC669A /* Moon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943552DB184D000EC669A /* Moon.swift */; };
+		04F22FAE2DBDBD16006DDADD /* MoonModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F22FAD2DBDBD11006DDADD /* MoonModelTests.swift */; };
 		04F36D1E2DB84E1A002D620E /* DataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */; };
 		04F36D202DB84F24002D620E /* Calendar+DatesBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F36D1F2DB84F1F002D620E /* Calendar+DatesBetween.swift */; };
 		04F36D222DB9DE75002D620E /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F36D212DB9DE6F002D620E /* NetworkManagerTests.swift */; };
@@ -83,6 +84,7 @@
 		048943512DB1816000EC669A /* MoonPhaseDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseDay.swift; sourceTree = "<group>"; };
 		048943532DB1817500EC669A /* MoonPhaseRangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseRangeResponse.swift; sourceTree = "<group>"; };
 		048943552DB184D000EC669A /* Moon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moon.swift; sourceTree = "<group>"; };
+		04F22FAD2DBDBD11006DDADD /* MoonModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonModelTests.swift; sourceTree = "<group>"; };
 		04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderTests.swift; sourceTree = "<group>"; };
 		04F36D1F2DB84F1F002D620E /* Calendar+DatesBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DatesBetween.swift"; sourceTree = "<group>"; };
 		04F36D212DB9DE6F002D620E /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		045513EB2CA234850072221A /* MoonTests */ = {
 			isa = PBXGroup;
 			children = (
+				04F22FAD2DBDBD11006DDADD /* MoonModelTests.swift */,
 				04F36D212DB9DE6F002D620E /* NetworkManagerTests.swift */,
 				04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */,
 				045514102CA26ED10072221A /* TestJSON.json */,
@@ -423,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04F22FAE2DBDBD16006DDADD /* MoonModelTests.swift in Sources */,
 				04F36D222DB9DE75002D620E /* NetworkManagerTests.swift in Sources */,
 				04F36D1E2DB84E1A002D620E /* DataLoaderTests.swift in Sources */,
 				045513ED2CA234850072221A /* MoonPhaseResponseTests.swift in Sources */,

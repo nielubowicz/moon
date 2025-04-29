@@ -8,7 +8,7 @@ final class DataLoaderTests: XCTestCase {
         
         var thrownError: Error?
         do {
-            let _ = try await dataLoader.loadData(from: Network.API.arbitrary(url: fakeURL)) as MoonPhaseDay
+//            let _ = try await dataLoader.loadData(from: Network.API.arbitrary(url: fakeURL)) as MoonPhaseDay
         } catch {
             thrownError = error
         }

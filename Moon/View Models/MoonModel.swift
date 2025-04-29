@@ -18,10 +18,29 @@ final class MoonModel: Hashable, Identifiable {
     }
     
     var formattedPhase: String {
-        if phase <= 0.5 {
-            return (phase * 2).formatted(.percent) + (phase < 0.5 ? ", Waxing" : ", Full Moon")
+        let adjustedPhase = (phase <= 0.5 ? phase * 2 : 2 * (1 - phase))
+        return adjustedPhase.formatted(.percent) + ", " + formattedPhaseDescription
+    }
+    
+    var formattedPhaseDescription: String {
+        if phase == 0 {
+            "New Moon"
+        } else if phase < 0.25 {
+            "Waxing Crescent"
+        } else if phase == 0.25 {
+            "First Quarter"
+        } else if phase < 0.5 {
+            "Waxing Gibbous"
+        } else if phase == 0.5 {
+            "Full Moon"
+        } else if phase < 0.75 {
+            "Waning Gibbous"
+        } else if phase == 0.75 {
+            "Third Quarter"
+        } else if phase < 1 {
+            "Waning Crescent"
         } else {
-            return (2 * (1 - phase)).formatted(.percent) + ", Waning"
+            "New Moon"
         }
     }
     
