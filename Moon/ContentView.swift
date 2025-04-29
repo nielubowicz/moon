@@ -42,7 +42,8 @@ struct ContentView: View {
             VStack {
                 if viewModels.count > 0 {
                     AnimatedMoon(models: viewModels)
-                        .transition(.slide)
+                } else {
+                    Color.black
                 }
                 Spacer()
                 Button("Select Date") {
@@ -54,9 +55,10 @@ struct ContentView: View {
                 if showPicker {
                     DatePicker("moon date", selection: $selectedDate, displayedComponents: .date)
                         .datePickerStyle(.graphical)
-                        .background(.black)
                         .frame(width: 320)
-                        .padding()
+                        .padding(48)
+                        .background(.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 16))
                 }
             }
             .onChange(of: Network.LocationManager.shared.currentZipCode) { _, _ in

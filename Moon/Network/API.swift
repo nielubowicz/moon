@@ -110,7 +110,7 @@ extension Network {
         }
         
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-            Task {
+            Task { @MainActor in
                 guard let location = locations.last else { return }
                 do {
                     let placemark = try await geocoder.reverseGeocodeLocation(location).last
