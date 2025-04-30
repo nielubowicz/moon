@@ -3,7 +3,9 @@ import SwiftUI
 
 extension Network {
     enum NetworkError: Error {
-        case urlError(URLError)
+        case clientError(Int)
+        case serverError(Int)
+        case unexpectedStatusCode(Int)
         case decodingError(DecodingError)
     }
 }

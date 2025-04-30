@@ -2,20 +2,17 @@
 import XCTest
 
 final class DataLoaderTests: XCTestCase {
-    func test404() async {
+    func testDataLoaderThrows404ErrorForFakeURL() async throws {
+        let fakeURL = URL(string: "https://example.com/fake-endpoint")!
         let dataLoader = Network.DataLoader()
-        let fakeURL = URL(string: "https://this.is.not.a.real.url")!
         
-        var thrownError: Error?
         do {
-//            let _ = try await dataLoader.loadData(from: Network.API.arbitrary(url: fakeURL)) as MoonPhaseDay
+            _ = try await dataLoader.loadData(from: Network.API.arbitrary(url: fakeURL)) as MoonPhaseDay
+            XCTFail("Expected a 404 error, but no error was thrown.")
+        } catch let Network.NetworkError.clientError(statusCode) {
+            XCTAssertEqual(404, statusCode, "Expected a 404 error, but got code: \(statusCode).")
         } catch {
-            thrownError = error
+            XCTFail("Unexpected error: \(error)")
         }
-        
-        XCTAssertNotNil(thrownError)
-        XCTAssert(thrownError is URLError)
-        let urlError = thrownError as? URLError
-        XCTAssert(urlError?.code == .badURL)
     }
 }

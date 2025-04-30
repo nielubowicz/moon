@@ -10,26 +10,24 @@ import SwiftUI
 
 extension Network {
     actor DataLoader: DataLoadingProvider {
-//        let locationManager: LocationManager
-//        
-//        init(locationManager: LocationManager) {
-//            self.locationManager = locationManager
-//        }
-//        
         func loadData<T: Decodable>(from requestType: Network.API) async throws -> T {
             let request = URLRequest(url: requestType.toURL(LocationManager.shared.currentZipCode))
             do {
                 let (data, response) = try await URLSession.shared.data(for: request)
                 if let httpResponse = response as? HTTPURLResponse {
-                    // TODO: check for errors in response
-                    if httpResponse.statusCode >= 400 {
-                        throw NetworkError.urlError(URLError(URLError.Code(rawValue: httpResponse.statusCode)))
+                    switch httpResponse.statusCode {
+                    case 200...299:
+                        break
+                    case 400...499:
+                        throw NetworkError.clientError(httpResponse.statusCode)
+                    case 500...599:
+                        throw NetworkError.serverError(httpResponse.statusCode)
+                    default:
+                        throw NetworkError.unexpectedStatusCode(httpResponse.statusCode)
                     }
                 }
 
                 return try decode(data)
-            } catch let error as URLError {
-                throw NetworkError.urlError(error)
             } catch let error as DecodingError {
                 throw NetworkError.decodingError(error)
             }

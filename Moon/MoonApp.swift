@@ -14,20 +14,20 @@ struct MoonApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if locationManager.currentZipCode.isEmpty {
-                ProgressView(label: { Text("Loading Location...") })
-                    .progressViewStyle(.circular)
-                    .padding(48)
-                    .background(Color.black.opacity(0.4))
-                    .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .task {
-                        locationManager.beginUpdates()
+            ContentView()
+                .environment(\.networkProvider, Network.NetworkManager())
+                .modelContainer(for: MoonModel.self)
+                .overlay {
+                    if locationManager.currentZipCode.isEmpty {
+                        ProgressView(label: { Text("Loading Location...") })
+                            .progressViewStyle(.circular)
+                            .padding(48)
+                            .clipShape(RoundedRectangle(cornerRadius: 16))
+                            .task {
+                                locationManager.beginUpdates()
+                            }
                     }
-            } else {
-                ContentView()
-                    .environment(\.networkProvider, Network.NetworkManager())
-                    .modelContainer(for: MoonModel.self)
-            }
+                }
         }
     }
 }
