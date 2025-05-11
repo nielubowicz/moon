@@ -13,7 +13,7 @@ extension Network {
 extension Network {
     protocol NetworkProvider: ObservableObject {
         func getToday() async throws -> MoonModel?
-        func getDate(_ date: Date) async throws -> MoonModel?
+        func getMoonModelForDate(_ date: Date) async throws -> MoonModel?
         func getDateRange(from: Date, to: Date) async throws -> [MoonModel]?
     }
 }
@@ -32,10 +32,11 @@ extension Network {
         }
         
         func getToday() async throws -> MoonModel? {
-            try await getDate(.now)
+            try await getMoonModelForDate(.now)
         }
         
-        func getDate(_ date: Date) async throws -> MoonModel? {
+        func getMoonModelForDate(_ date: Date) async throws -> MoonModel? {
+            let date = Calendar.autoupdatingCurrent.startOfDay(for: date)
             if let cached = cache[date] {
                 switch cached {
                 case let .ready(value):

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04151B3C2DCBC72500B4ACB5 /* CalendarManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04151B3B2DCBC71F00B4ACB5 /* CalendarManagerTests.swift */; };
 		045052992DB685A700F2BEE3 /* Sequence+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045052982DB685A300F2BEE3 /* Sequence+Async.swift */; };
 		0450529B2DB685CB00F2BEE3 /* PreviewNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */; };
 		0450529D2DB685F400F2BEE3 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529C2DB685F000F2BEE3 /* DataLoader.swift */; };
@@ -32,6 +33,13 @@
 		048943522DB1816200EC669A /* MoonPhaseDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943512DB1816000EC669A /* MoonPhaseDay.swift */; };
 		048943542DB1817900EC669A /* MoonPhaseRangeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943532DB1817500EC669A /* MoonPhaseRangeResponse.swift */; };
 		048943562DB184D600EC669A /* Moon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048943552DB184D000EC669A /* Moon.swift */; };
+		04C24C552DCF9DC2002390A7 /* CalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C24C532DCF9DC2002390A7 /* CalendarManager.swift */; };
+		04C24C562DCF9DC2002390A7 /* MoonCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C24C542DCF9DC2002390A7 /* MoonCalendar.swift */; };
+		04C24C592DCF9DC2002390A7 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C24C582DCF9DC2002390A7 /* LocationManager.swift */; };
+		04C24C5A2DCF9DC2002390A7 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C24C572DCF9DC2002390A7 /* Location.swift */; };
+		04C24C5D2DD0EEC8002390A7 /* EnvironmentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C24C5C2DD0EEC3002390A7 /* EnvironmentValues.swift */; };
+		04C24C632DD0EF8B002390A7 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C24C622DD0EF8B002390A7 /* EventViewController.swift */; };
+		04C24C652DD0EFD3002390A7 /* EventViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C24C642DD0EFD3002390A7 /* EventViewControllerDelegate.swift */; };
 		04F22FAE2DBDBD16006DDADD /* MoonModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F22FAD2DBDBD11006DDADD /* MoonModelTests.swift */; };
 		04F36D1E2DB84E1A002D620E /* DataLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */; };
 		04F36D202DB84F24002D620E /* Calendar+DatesBetween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F36D1F2DB84F1F002D620E /* Calendar+DatesBetween.swift */; };
@@ -56,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04151B3B2DCBC71F00B4ACB5 /* CalendarManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManagerTests.swift; sourceTree = "<group>"; };
+		04151B3D2DCBCC0B00B4ACB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		045052982DB685A300F2BEE3 /* Sequence+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Async.swift"; sourceTree = "<group>"; };
 		0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewNetworkManager.swift; sourceTree = "<group>"; };
 		0450529C2DB685F000F2BEE3 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -84,6 +94,13 @@
 		048943512DB1816000EC669A /* MoonPhaseDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseDay.swift; sourceTree = "<group>"; };
 		048943532DB1817500EC669A /* MoonPhaseRangeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonPhaseRangeResponse.swift; sourceTree = "<group>"; };
 		048943552DB184D000EC669A /* Moon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moon.swift; sourceTree = "<group>"; };
+		04C24C532DCF9DC2002390A7 /* CalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
+		04C24C542DCF9DC2002390A7 /* MoonCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonCalendar.swift; sourceTree = "<group>"; };
+		04C24C572DCF9DC2002390A7 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		04C24C582DCF9DC2002390A7 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		04C24C5C2DD0EEC3002390A7 /* EnvironmentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentValues.swift; sourceTree = "<group>"; };
+		04C24C622DD0EF8B002390A7 /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		04C24C642DD0EFD3002390A7 /* EventViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewControllerDelegate.swift; sourceTree = "<group>"; };
 		04F22FAD2DBDBD11006DDADD /* MoonModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonModelTests.swift; sourceTree = "<group>"; };
 		04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoaderTests.swift; sourceTree = "<group>"; };
 		04F36D1F2DB84F1F002D620E /* Calendar+DatesBetween.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+DatesBetween.swift"; sourceTree = "<group>"; };
@@ -147,6 +164,9 @@
 		045513DA2CA234840072221A /* Moon */ = {
 			isa = PBXGroup;
 			children = (
+				04151B3D2DCBCC0B00B4ACB5 /* Info.plist */,
+				04C24C5E2DD0EEF9002390A7 /* MoonCalendar */,
+				04C24C5F2DD0EF0B002390A7 /* Location */,
 				04F36D232DBA97D9002D620E /* Resources */,
 				0476DE2D2DB3FD3A009ED2A3 /* View Models */,
 				048943482DB180E100EC669A /* Views */,
@@ -172,6 +192,7 @@
 		045513EB2CA234850072221A /* MoonTests */ = {
 			isa = PBXGroup;
 			children = (
+				04151B3B2DCBC71F00B4ACB5 /* CalendarManagerTests.swift */,
 				04F22FAD2DBDBD11006DDADD /* MoonModelTests.swift */,
 				04F36D212DB9DE6F002D620E /* NetworkManagerTests.swift */,
 				04F36D1D2DB84E17002D620E /* DataLoaderTests.swift */,
@@ -206,6 +227,7 @@
 		0455140A2CA2652B0072221A /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				04C24C5C2DD0EEC3002390A7 /* EnvironmentValues.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -256,6 +278,26 @@
 				045514082CA23A5D0072221A /* MoonPhaseResponse.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		04C24C5E2DD0EEF9002390A7 /* MoonCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				04C24C642DD0EFD3002390A7 /* EventViewControllerDelegate.swift */,
+				04C24C622DD0EF8B002390A7 /* EventViewController.swift */,
+				04C24C532DCF9DC2002390A7 /* CalendarManager.swift */,
+				04C24C542DCF9DC2002390A7 /* MoonCalendar.swift */,
+			);
+			path = MoonCalendar;
+			sourceTree = "<group>";
+		};
+		04C24C5F2DD0EF0B002390A7 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				04C24C572DCF9DC2002390A7 /* Location.swift */,
+				04C24C582DCF9DC2002390A7 /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		04F36D232DBA97D9002D620E /* Resources */ = {
@@ -404,10 +446,14 @@
 				0489434D2DB1811D00EC669A /* NetworkManager.swift in Sources */,
 				0476DE2F2DB3FD7A009ED2A3 /* MoonModel.swift in Sources */,
 				048943542DB1817900EC669A /* MoonPhaseRangeResponse.swift in Sources */,
+				04C24C632DD0EF8B002390A7 /* EventViewController.swift in Sources */,
 				045513DE2CA234840072221A /* ContentView.swift in Sources */,
 				0450529D2DB685F400F2BEE3 /* DataLoader.swift in Sources */,
 				045514072CA235A70072221A /* API.swift in Sources */,
 				045513DC2CA234840072221A /* MoonApp.swift in Sources */,
+				04C24C592DCF9DC2002390A7 /* LocationManager.swift in Sources */,
+				04C24C5D2DD0EEC8002390A7 /* EnvironmentValues.swift in Sources */,
+				04C24C5A2DCF9DC2002390A7 /* Location.swift in Sources */,
 				045514092CA23A5D0072221A /* MoonPhaseResponse.swift in Sources */,
 				04F36D202DB84F24002D620E /* Calendar+DatesBetween.swift in Sources */,
 				048943522DB1816200EC669A /* MoonPhaseDay.swift in Sources */,
@@ -418,7 +464,10 @@
 				0476DE362DB40311009ED2A3 /* NSCache+MoonCache.swift in Sources */,
 				0450529B2DB685CB00F2BEE3 /* PreviewNetworkManager.swift in Sources */,
 				0476DE332DB3FDC1009ED2A3 /* MoonShadow.swift in Sources */,
+				04C24C552DCF9DC2002390A7 /* CalendarManager.swift in Sources */,
+				04C24C562DCF9DC2002390A7 /* MoonCalendar.swift in Sources */,
 				0489434B2DB1810400EC669A /* FormatStyle+NetworkFormat.swift in Sources */,
+				04C24C652DD0EFD3002390A7 /* EventViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +479,7 @@
 				04F36D222DB9DE75002D620E /* NetworkManagerTests.swift in Sources */,
 				04F36D1E2DB84E1A002D620E /* DataLoaderTests.swift in Sources */,
 				045513ED2CA234850072221A /* MoonPhaseResponseTests.swift in Sources */,
+				04151B3C2DCBC72500B4ACB5 /* CalendarManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -590,6 +640,7 @@
 				DEVELOPMENT_TEAM = 9RH4L8S898;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Moon/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Moon uses your location to determine the correct moon phase";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -620,6 +671,7 @@
 				DEVELOPMENT_TEAM = 9RH4L8S898;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Moon/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Moon uses your location to determine the correct moon phase";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

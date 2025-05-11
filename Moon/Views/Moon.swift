@@ -36,13 +36,11 @@ struct Moon: View {
     var moon: some View {
         Circle()
             .fill(.white)
-            .frame(width: 100, height: 100)
     }
 
     @ViewBuilder
     var shadow: some View {
         MoonShadowView(viewModel: viewModel)
-            .frame(width: 100, height: 100)
     }
 }
 

@@ -11,7 +11,7 @@ final class NetworkManagerTests: XCTestCase {
         cache[.now] = .ready(testModel)
         
         let manager = Network.NetworkManager(cache: cache, dataLoader: dataLoader)
-        let model = try? await manager.getDate(.now)
+        let model = try? await manager.getMoonModelForDate(.now)
         XCTAssertNotNil(model)
         XCTAssertEqual(model!, testModel)
     }
@@ -20,7 +20,7 @@ final class NetworkManagerTests: XCTestCase {
         cache[.now] = .loading(Task<MoonModel, Error> { return testModel })
         
         let manager = Network.NetworkManager(cache: cache, dataLoader: dataLoader)
-        let model = try? await manager.getDate(.now)
+        let model = try? await manager.getMoonModelForDate(.now)
         XCTAssertNotNil(model)
         XCTAssertEqual(model!, testModel)
     }

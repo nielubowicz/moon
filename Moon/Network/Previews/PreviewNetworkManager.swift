@@ -6,7 +6,7 @@ extension Network {
             MoonModel(date: .now, phase: 0.5)
         }
 
-        func getDate(_ date: Date) async -> MoonModel? {
+        func getMoonModelForDate(_ date: Date) async -> MoonModel? {
             MoonModel(date: date, phase: 0.5)
         }
         

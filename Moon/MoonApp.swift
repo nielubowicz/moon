@@ -10,7 +10,8 @@ import SwiftData
 
 @main
 struct MoonApp: App {
-    @ObservedObject private var locationManager = Network.LocationManager.shared
+    @ObservedObject private var locationManager = Location.LocationManager.shared
+    @Environment(\.calendarManager) private var calendarManager
     
     var body: some Scene {
         WindowGroup {
@@ -27,6 +28,9 @@ struct MoonApp: App {
                                 locationManager.beginUpdates()
                             }
                     }
+                }
+                .task {
+                    await calendarManager.createCalendar()
                 }
         }
     }
