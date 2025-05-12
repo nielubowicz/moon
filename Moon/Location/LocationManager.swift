@@ -25,21 +25,14 @@ extension Location {
         
         func beginUpdates() {
             manager.delegate = self
-            switch manager.authorizationStatus {
-            case .notDetermined:
-                manager.requestWhenInUseAuthorization()
-            case .authorizedWhenInUse,
-                    .authorizedAlways:
-                manager.requestLocation()
-            case .denied,
-                    .restricted:
-                print("Location services not enabled")
-            default:
-                print("Unknown CLLocationManager authorization status: \(manager.authorizationStatus)")
-            }
+            checkLocationManagerStatusAndRequestLocationOrAuthorization(manager)
         }
     
         func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+            checkLocationManagerStatusAndRequestLocationOrAuthorization(manager)
+        }
+        
+        private func checkLocationManagerStatusAndRequestLocationOrAuthorization(_ manager: CLLocationManager) {
             switch manager.authorizationStatus {
             case .notDetermined:
                 manager.requestWhenInUseAuthorization()

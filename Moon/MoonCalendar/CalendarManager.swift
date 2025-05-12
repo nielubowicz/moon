@@ -43,16 +43,17 @@ extension MoonCalendar {
                 }
                 
                 // Create a new calendar
-                let calendar = EKCalendar(for: .event, eventStore: self.store)
-                calendar.source = self.store.sources.first
+                let calendar = EKCalendar(for: .event, eventStore: store)
+                calendar.source = store.sources.first
                 calendar.title = title
                 calendar.cgColor = Color(red: 120 / 255.0, green: 6 / 255.0, blue: 6 / 255.0).cgColor
                 
                 do {
-                    try self.store.saveCalendar(calendar, commit: true)
+                    try store.saveCalendar(calendar, commit: true)
                     self.calendar = calendar
                     identifier = calendar.calendarIdentifier
                 } catch {
+                    self.calendar = store.defaultCalendarForNewEvents
                     print("Error saving calendar: \(error)")
                 }
             } catch {

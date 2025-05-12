@@ -6,7 +6,7 @@ final class MoonModel: Hashable, Identifiable {
     var id: UUID
     var date: Date
     var phase: Double
-    var isHighlighted: Bool
+    var isHighlighted: Bool = false
 
     init(id: UUID = UUID(), date: Date, phase: Double, isHighlighted: Bool = false) {
         self.id = id

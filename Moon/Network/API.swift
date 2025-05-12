@@ -1,9 +1,8 @@
 import Foundation
 
 extension Network {
-    private static let apiKey = "PZ3PJAZ9AQZ8BSZUNYJ78PZSD"
+    private static let apiKey = ProcessInfo.processInfo.environment["API_KEY"] ?? ""
     private static let baseURL = URL(string: "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline")!
-    // TODO: Get user zipcode ? or default to one
 
     enum API {
         case date(on: Date)
