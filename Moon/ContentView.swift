@@ -11,8 +11,11 @@ struct ContentView: View {
     @Environment(\.calendarManager) var calendarManager
 
     // Display state vars
-    @State var viewModel: MoonModel?
+    @State private var lastViewModels = [MoonModel]()
     @State var viewModels = [MoonModel]() {
+        willSet {
+            lastViewModels = viewModels
+        }
         didSet {
             for event in events {
                 viewModels.forEach { $0.isHighlighted = (event.startDate == $0.date) }
@@ -38,6 +41,14 @@ struct ContentView: View {
                     AnimatedMoon(models: viewModels)
                         .onTapGesture(count: 2) {
                             showingEventScreen.toggle()
+                        }
+                        .transaction(value: viewModels) { transaction in
+                            if let lastPhase = lastViewModels.first?.phase,
+                               let currentPhase = viewModels.first?.phase {
+                                transaction.animation =
+                                (lastPhase == 0 && currentPhase >= 0.95) ||
+                                (currentPhase == 0 && lastPhase >= 0.95) ? nil : .easeInOut
+                            }
                         }
                 } else {
                     Color.black
@@ -119,14 +130,12 @@ struct ContentView: View {
         if let storedModel = storedModels.first(
             where: { $0.date == Calendar.autoupdatingCurrent.startOfDay(for: selectedDate) }
         ) {
-            storedModel.isHighlighted = events.contains(where: {$0.startDate == storedModel.date})
             viewModels = [storedModel]
             return
         }
         
         Task {
             if let model = try? await networkManager.getMoonModelForDate(selectedDate) {
-                model.isHighlighted = events.contains(where: {$0.startDate == model.date})
                 viewModels = [model]
                 modelContext.insert(model)
                 do {

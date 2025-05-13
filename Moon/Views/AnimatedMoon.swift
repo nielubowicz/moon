@@ -15,7 +15,6 @@ struct AnimatedMoon: View {
         VStack {
             if index < models.count {
                 Moon(viewModel: models[index])
-                    .animation(.linear, value: index)
             }
         }
         .onAppear {
