@@ -27,6 +27,9 @@ struct ContentView: View {
     @State var showPicker = false
     @State var selectedDate: Date = .now
     
+    // Location state vars
+    @State var showLocationPicker = false
+    
     // Calendar event state vars
     @State var events = [EKEvent]()
     @State var showingEventScreen = false
@@ -54,20 +57,22 @@ struct ContentView: View {
                     Color.black
                 }
                 Spacer()
-                Button("Select Date") {
-                    showPicker = true
-                }
+                buttons
             }
             .padding(.horizontal, 48)
-            .overlay {
-                if showPicker {
-                    DatePicker("moon date", selection: $selectedDate, displayedComponents: .date)
-                        .datePickerStyle(.graphical)
-                        .frame(width: 320)
-                        .padding(48)
-                        .background(.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 16))
+            .sheet(
+                isPresented: $showPicker,
+                onDismiss: {
+                    showPicker = false
+                    updateEventsAndModels()
                 }
+            ) {
+                DatePicker("moon date", selection: $selectedDate, displayedComponents: .date)
+                    .datePickerStyle(.graphical)
+                    .frame(width: 320)
+                    .padding(48)
+                    .background(.white)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
             }
             .onAppear {
                 updateEventsAndModels()
@@ -76,19 +81,20 @@ struct ContentView: View {
                 updateEventsAndModels()
             }
             .onChange(of: selectedDate) { _, _ in
-                showPicker = false
                 updateEventsAndModels()
             }
-            .sheet(isPresented: $showingEventScreen) {
+            .sheet(
+                isPresented: $showingEventScreen,
+                onDismiss: {
+                    showingEventScreen = false
+                    updateEventsAndModels()
+                }
+            ) {
                 EventViewController(
                     event: event,
                     eventStore: calendarManager.store,
                     delegate: EventViewControllerDelegate(isShowingEventScreen: $showingEventScreen)
                 )
-            }
-            .onChange(of: showingEventScreen) { _, _ in
-                guard showingEventScreen == false else { return }
-                updateEventsAndModels()
             }
             .animation(.easeInOut, value: viewModels)
             .gesture(
@@ -105,6 +111,21 @@ struct ContentView: View {
                     }
             )
         }
+    }
+    
+    @ViewBuilder
+    var buttons: some View {
+        HStack {
+            Button("Select Date") {
+                showPicker.toggle()
+            }
+            Spacer()
+            Button(Location.LocationManager.shared.currentZipCode) {
+                showLocationPicker.toggle()
+            }
+        }
+        .padding(.horizontal, 48)
+        .padding(.vertical, 24)
     }
     
     private var event: EKEvent {
