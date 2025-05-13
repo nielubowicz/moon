@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		04151B3C2DCBC72500B4ACB5 /* CalendarManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04151B3B2DCBC71F00B4ACB5 /* CalendarManagerTests.swift */; };
+		041C89212DD3BEA8001D56B3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041C89202DD3BEA8001D56B3 /* Media.xcassets */; };
+		041C89242DD3C00E001D56B3 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C89232DD3C00E001D56B3 /* Assets+Generated.swift */; };
 		045052992DB685A700F2BEE3 /* Sequence+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045052982DB685A300F2BEE3 /* Sequence+Async.swift */; };
 		0450529B2DB685CB00F2BEE3 /* PreviewNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */; };
 		0450529D2DB685F400F2BEE3 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529C2DB685F000F2BEE3 /* DataLoader.swift */; };
@@ -66,6 +68,8 @@
 /* Begin PBXFileReference section */
 		04151B3B2DCBC71F00B4ACB5 /* CalendarManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManagerTests.swift; sourceTree = "<group>"; };
 		04151B3D2DCBCC0B00B4ACB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		041C89202DD3BEA8001D56B3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		041C89232DD3C00E001D56B3 /* Assets+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
 		045052982DB685A300F2BEE3 /* Sequence+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Async.swift"; sourceTree = "<group>"; };
 		0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewNetworkManager.swift; sourceTree = "<group>"; };
 		0450529C2DB685F000F2BEE3 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -132,6 +136,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041C89222DD3BF94001D56B3 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				041C89232DD3C00E001D56B3 /* Assets+Generated.swift */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
 		0450529E2DB6860F00F2BEE3 /* Previews */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +176,7 @@
 		045513DA2CA234840072221A /* Moon */ = {
 			isa = PBXGroup;
 			children = (
+				041C89222DD3BF94001D56B3 /* Assets */,
 				04151B3D2DCBCC0B00B4ACB5 /* Info.plist */,
 				04C24C5E2DD0EEF9002390A7 /* MoonCalendar */,
 				04C24C5F2DD0EF0B002390A7 /* Location */,
@@ -303,6 +316,7 @@
 		04F36D232DBA97D9002D620E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				041C89202DD3BEA8001D56B3 /* Media.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -415,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				045513E32CA234850072221A /* Preview Assets.xcassets in Resources */,
+				041C89212DD3BEA8001D56B3 /* Media.xcassets in Resources */,
 				045513E02CA234850072221A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,6 +474,7 @@
 				048943522DB1816200EC669A /* MoonPhaseDay.swift in Sources */,
 				0476DE312DB3FD93009ED2A3 /* MoonShadowView.swift in Sources */,
 				045052992DB685A700F2BEE3 /* Sequence+Async.swift in Sources */,
+				041C89242DD3C00E001D56B3 /* Assets+Generated.swift in Sources */,
 				0489434F2DB1813600EC669A /* Network.swift in Sources */,
 				045052A02DB6862100F2BEE3 /* PreviewDataLoader.swift in Sources */,
 				0476DE362DB40311009ED2A3 /* NSCache+MoonCache.swift in Sources */,

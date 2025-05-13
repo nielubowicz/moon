@@ -34,8 +34,7 @@ struct Moon: View {
 
     @ViewBuilder
     var moon: some View {
-        Circle()
-            .fill(.white)
+        Image(asset: Asset.moon)
     }
 
     @ViewBuilder

@@ -42,8 +42,8 @@ struct MoonShadow: Shape {
 
     func path(in rect: CGRect) -> Path {
         // extend the top and bottom just past the boundaries
-        let top = CGPointMake(rect.midX, rect.minY - 20)
-        let bottom = CGPointMake(rect.midX, rect.maxY + 20)
+        let top = CGPointMake(rect.midX, rect.minY - 44)
+        let bottom = CGPointMake(rect.midX, rect.maxY + 44)
         let rightControl = CGPointMake(rect.midX + Side.right(phase: phase).width(rect), rect.midY)
         let leftControl = CGPointMake(rect.midX + Side.left(phase: phase).width(rect), rect.midY)
 

@@ -6,7 +6,7 @@ struct MoonShadowView: View {
     var body: some View {
         MoonShadow(phase: viewModel.phase)
             .clipShape(Circle())
-            .foregroundStyle(viewModel.isHighlighted ? Color.red.opacity(0.3) : Color.black.opacity(0.3))
+            .foregroundStyle(viewModel.isHighlighted ? Color.red.opacity(0.4) : Color.black.opacity(0.4))
             .blur(radius: 4)
     }
 }

@@ -32,4 +32,5 @@ struct AnimatedMoon: View {
 
 #Preview {
     AnimatedMoon(models: MoonModel.fullCycle, animationDuration: 0.2)
+        .padding()
 }
