@@ -71,5 +71,19 @@ extension MoonCalendar {
             let predicate = store.predicateForEvents(withStart: start, end: end, calendars: [calendar])
             return store.events(matching: predicate)
         }
+        
+        func eventWithTitle(_ title: String, on selectedDate: Date, recurrance: Int = 29) -> EKEvent {
+            let event = EKEvent(eventStore: store)
+            event.title = title
+            event.startDate = selectedDate
+            event.endDate = selectedDate
+            event.isAllDay = true
+            event.calendar = calendar
+            event.recurrenceRules = [
+                EKRecurrenceRule(recurrenceWith: .daily, interval: recurrance, end: nil)
+            ]
+            
+            return event
+        }
     }
 }

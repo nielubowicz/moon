@@ -60,6 +60,18 @@ struct ContentView: View {
                 buttons
             }
             .padding(.horizontal, 48)
+            .onAppear {
+                updateEventsAndModels()
+            }
+            .onChange(of: Location.LocationManager.shared.currentZipCode) { old, new in
+                if old != new, old.isEmpty == false {
+                    clearModels()
+                }
+                updateEventsAndModels()
+            }
+            .onChange(of: selectedDate) { _, _ in
+                updateEventsAndModels()
+            }
             .sheet(
                 isPresented: $showPicker,
                 onDismiss: {
@@ -74,18 +86,6 @@ struct ContentView: View {
                     .background(.white)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
             }
-            .onAppear {
-                updateEventsAndModels()
-            }
-            .onChange(of: Location.LocationManager.shared.currentZipCode) { old, new in
-                if old != new, old.isEmpty == false {
-                    clearModels()
-                }
-                updateEventsAndModels()
-            }
-            .onChange(of: selectedDate) { _, _ in
-                updateEventsAndModels()
-            }
             .sheet(
                 isPresented: $showingEventScreen,
                 onDismiss: {
@@ -94,7 +94,7 @@ struct ContentView: View {
                 }
             ) {
                 EventViewController(
-                    event: event,
+                    event: calendarManager.eventWithTitle("The Thing", on: selectedDate),
                     eventStore: calendarManager.store,
                     delegate: EventViewControllerDelegate(isShowingEventScreen: $showingEventScreen)
                 )
@@ -140,20 +140,6 @@ struct ContentView: View {
         .padding(.vertical, 24)
     }
     
-    private var event: EKEvent {
-        let event = EKEvent(eventStore: calendarManager.store)
-        event.title = "The Thing"
-        event.startDate = selectedDate
-        event.endDate = selectedDate
-        event.isAllDay = true
-        event.calendar = calendarManager.calendar
-        event.recurrenceRules = [
-            EKRecurrenceRule(recurrenceWith: .daily, interval: 29, end: nil)
-        ]
-        
-        return event
-    }
-
     private func clearModels() {
         do {
             viewModels = []
