@@ -77,7 +77,10 @@ struct ContentView: View {
             .onAppear {
                 updateEventsAndModels()
             }
-            .onChange(of: Location.LocationManager.shared.currentZipCode) { _, _ in
+            .onChange(of: Location.LocationManager.shared.currentZipCode) { old, new in
+                if old != new, old.isEmpty == false {
+                    clearModels()
+                }
                 updateEventsAndModels()
             }
             .onChange(of: selectedDate) { _, _ in
@@ -95,6 +98,15 @@ struct ContentView: View {
                     eventStore: calendarManager.store,
                     delegate: EventViewControllerDelegate(isShowingEventScreen: $showingEventScreen)
                 )
+            }
+            .sheet(
+                isPresented: $showLocationPicker,
+                onDismiss: { showLocationPicker = false }
+            ) {
+                Location
+                    .LocationPicker(
+                        selectedLocation: Location.LocationManager.shared.$currentZipCode
+                    )
             }
             .animation(.easeInOut, value: viewModels)
             .gesture(
@@ -142,6 +154,17 @@ struct ContentView: View {
         return event
     }
 
+    private func clearModels() {
+        do {
+            viewModels = []
+            lastViewModels = []
+            try modelContext.delete(model: MoonModel.self)
+            try modelContext.save()
+        } catch {
+            print("Error deleting models: \(error)")
+        }
+    }
+    
     private func updateEventsAndModels() {
         events = calendarManager.getEventsBetween(start: selectedDate, and: selectedDate)
         requestMoonModels()

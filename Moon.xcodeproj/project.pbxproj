@@ -10,6 +10,7 @@
 		04151B3C2DCBC72500B4ACB5 /* CalendarManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04151B3B2DCBC71F00B4ACB5 /* CalendarManagerTests.swift */; };
 		041C89212DD3BEA8001D56B3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041C89202DD3BEA8001D56B3 /* Media.xcassets */; };
 		041C89242DD3C00E001D56B3 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C89232DD3C00E001D56B3 /* Assets+Generated.swift */; };
+		041C89262DD401DC001D56B3 /* LocationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C89252DD401D8001D56B3 /* LocationPicker.swift */; };
 		045052992DB685A700F2BEE3 /* Sequence+Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045052982DB685A300F2BEE3 /* Sequence+Async.swift */; };
 		0450529B2DB685CB00F2BEE3 /* PreviewNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */; };
 		0450529D2DB685F400F2BEE3 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0450529C2DB685F000F2BEE3 /* DataLoader.swift */; };
@@ -70,6 +71,7 @@
 		04151B3D2DCBCC0B00B4ACB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		041C89202DD3BEA8001D56B3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		041C89232DD3C00E001D56B3 /* Assets+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assets+Generated.swift"; sourceTree = "<group>"; };
+		041C89252DD401D8001D56B3 /* LocationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker.swift; sourceTree = "<group>"; };
 		045052982DB685A300F2BEE3 /* Sequence+Async.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Async.swift"; sourceTree = "<group>"; };
 		0450529A2DB685C700F2BEE3 /* PreviewNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewNetworkManager.swift; sourceTree = "<group>"; };
 		0450529C2DB685F000F2BEE3 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		04C24C5F2DD0EF0B002390A7 /* Location */ = {
 			isa = PBXGroup;
 			children = (
+				041C89252DD401D8001D56B3 /* LocationPicker.swift */,
 				04C24C572DCF9DC2002390A7 /* Location.swift */,
 				04C24C582DCF9DC2002390A7 /* LocationManager.swift */,
 			);
@@ -482,6 +485,7 @@
 				0476DE332DB3FDC1009ED2A3 /* MoonShadow.swift in Sources */,
 				04C24C552DCF9DC2002390A7 /* CalendarManager.swift in Sources */,
 				04C24C562DCF9DC2002390A7 /* MoonCalendar.swift in Sources */,
+				041C89262DD401DC001D56B3 /* LocationPicker.swift in Sources */,
 				0489434B2DB1810400EC669A /* FormatStyle+NetworkFormat.swift in Sources */,
 				04C24C652DD0EFD3002390A7 /* EventViewControllerDelegate.swift in Sources */,
 			);
