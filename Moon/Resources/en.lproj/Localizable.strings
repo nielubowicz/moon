@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  Moon
+
+  Created by mac on 5/15/25.
+  
+*/
+
+"Done" = "Done";
+"Enter Zipcode" = "Enter Zipcode";
+"Select Date" = "Select Date";
+"Loading Location" = "Loading Location …";
+
+/* Errors */
+/* Calendar */
+"error.calendar.permissionNotGranted" = "Permission not granted, using default calendar.";
+"error.calendar.requestAccess" = "Error requesting access to calendar:  $@";
+"error.calendar.save" = "Error saving calendar: $@";
+"error.calendar.notFound.granted" = "Calendar not found; permissions were granted to view events";
+"error.calendar.notFound.notGranted" = "Calendar not found; permissions were not granted to view events";
+
+/* Location */
+"error.location.notEnabled" = "Location services not enabled";
+"error.location.unknown" = "Unknown CLLocationManager authorization status: $@";
+
+/* CoreData */
+"error.coreData.deletion" = "Error deleting models: $@";
+
+/* Calendar Title */
+"Moon Phases" = "Moon Phases";
+
+/* Moon Phases */
+"moon.phase.firstQuarter" = "First Quarter";
+"moon.phase.full" = "Full Moon";
+"moon.phase.new" = "New Moon";
+"moon.phase.thirdQuarter" = "Third Quarter";
+"moon.phase.waningCrescent" = "Waning Crescent";
+"moon.phase.waningGibbous" = "Waning Gibbous";
+"moon.phase.waxingCrescent" = "Waxing Crescent";
+"moon.phase.waxingGibbous" = "Waxing Gibbous";

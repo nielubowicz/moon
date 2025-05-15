@@ -11,7 +11,7 @@ extension Location {
         
         var body: some View {
             VStack {
-                TextField("Enter location", text: $localSelectedLocation)
+                TextField(L10n.enterZipcode, text: $localSelectedLocation)
                     .focused($textFieldFocused)
                     .padding(8)
                     .overlay {
@@ -20,7 +20,7 @@ extension Location {
                     }
                     .padding()
 
-                Button("Done") {
+                Button(L10n.done) {
                     selectedLocation = localSelectedLocation
                     textFieldFocused = false
                     dismiss()

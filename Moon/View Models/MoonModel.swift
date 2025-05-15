@@ -26,23 +26,23 @@ final class MoonModel: Hashable, Identifiable {
     
     var formattedPhaseDescription: String {
         if phase == 0 {
-            "New Moon"
+            L10n.Moon.Phase.new
         } else if phase < 0.25 {
-            "Waxing Crescent"
+            L10n.Moon.Phase.waxingCrescent
         } else if phase == 0.25 {
-            "First Quarter"
+            L10n.Moon.Phase.firstQuarter
         } else if phase < 0.5 {
-            "Waxing Gibbous"
+            L10n.Moon.Phase.waxingGibbous
         } else if phase == 0.5 {
-            "Full Moon"
+            L10n.Moon.Phase.full
         } else if phase < 0.75 {
-            "Waning Gibbous"
+            L10n.Moon.Phase.waningGibbous
         } else if phase == 0.75 {
-            "Third Quarter"
+            L10n.Moon.Phase.thirdQuarter
         } else if phase < 1 {
-            "Waning Crescent"
+            L10n.Moon.Phase.waningCrescent
         } else {
-            "New Moon"
+            L10n.Moon.Phase.new
         }
     }
     

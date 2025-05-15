@@ -5,7 +5,7 @@ extension MoonCalendar {
     static let eventStore = EKEventStore()
     
     class CalendarManager {
-        private static let title = "Moon Phases"
+        private static let title = L10n.moonPhases
         
         @AppStorage("calendarIdentifier") private var identifier = "com.moon.moonphases"
         
@@ -37,7 +37,7 @@ extension MoonCalendar {
                 guard
                     granted
                 else {
-                    print("Permission not granted, using default calendar.");
+                    print(L10n.Error.Calendar.permissionNotGranted);
                     calendar = store.defaultCalendarForNewEvents
                     return
                 }
@@ -54,10 +54,10 @@ extension MoonCalendar {
                     identifier = calendar.calendarIdentifier
                 } catch {
                     self.calendar = store.defaultCalendarForNewEvents
-                    print("Error saving calendar: \(error)")
+                    print(L10n.Error.Calendar.save, error)
                 }
             } catch {
-                print("Error requesting access to calendar: \(error)")
+                print(L10n.Error.Calendar.requestAccess, error)
             }
         }
         
@@ -65,7 +65,11 @@ extension MoonCalendar {
             guard
                 let calendar = calendar
             else {
-                print("Calendar not found; permissions were \(EKEventStore.authorizationStatus(for: .event) == .fullAccess ? "granted" : "denied") to view events")
+                if EKEventStore.authorizationStatus(for: .event) == .fullAccess {
+                    print(L10n.Error.Calendar.NotFound.granted)
+                } else {
+                    print(L10n.Error.Calendar.NotFound.notGranted)
+                }
                 return []
             }
             let predicate = store.predicateForEvents(withStart: start, end: end, calendars: [calendar])

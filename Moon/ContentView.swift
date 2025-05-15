@@ -124,7 +124,7 @@ struct ContentView: View {
     @ViewBuilder
     var buttons: some View {
         HStack {
-            Button("Select Date") {
+            Button(L10n.selectDate) {
                 showPicker.toggle()
             }
             Spacer()
@@ -146,7 +146,7 @@ struct ContentView: View {
             try modelContext.delete(model: MoonModel.self)
             try modelContext.save()
         } catch {
-            print("Error deleting models: \(error)")
+            print(L10n.Error.CoreData.deletion, error)
         }
     }
     

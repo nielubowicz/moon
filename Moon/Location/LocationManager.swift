@@ -41,9 +41,9 @@ extension Location {
                 manager.requestLocation()
             case .denied,
                     .restricted:
-                print("Location services not enabled")
+                print(L10n.Error.Location.notEnabled)
             default:
-                print("Unknown CLLocationManager authorization status: \(manager.authorizationStatus)")
+                print(L10n.Error.Location.unknown, manager.authorizationStatus)
             }
         }
         

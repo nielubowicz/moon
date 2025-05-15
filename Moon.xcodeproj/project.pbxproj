@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040FCEAA2DD63FEB0065B8DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 040FCEA82DD63FEB0065B8DC /* Localizable.strings */; };
+		040FCEAC2DD641690065B8DC /* Strings+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040FCEAB2DD641690065B8DC /* Strings+Generated.swift */; };
 		04151B3C2DCBC72500B4ACB5 /* CalendarManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04151B3B2DCBC71F00B4ACB5 /* CalendarManagerTests.swift */; };
 		041C89212DD3BEA8001D56B3 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041C89202DD3BEA8001D56B3 /* Media.xcassets */; };
 		041C89242DD3C00E001D56B3 /* Assets+Generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041C89232DD3C00E001D56B3 /* Assets+Generated.swift */; };
@@ -67,6 +69,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040FCEA92DD63FEB0065B8DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		040FCEAB2DD641690065B8DC /* Strings+Generated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		04151B3B2DCBC71F00B4ACB5 /* CalendarManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarManagerTests.swift; sourceTree = "<group>"; };
 		04151B3D2DCBCC0B00B4ACB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		041C89202DD3BEA8001D56B3 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 		041C89222DD3BF94001D56B3 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				040FCEAB2DD641690065B8DC /* Strings+Generated.swift */,
 				041C89232DD3C00E001D56B3 /* Assets+Generated.swift */,
 			);
 			path = Assets;
@@ -320,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				041C89202DD3BEA8001D56B3 /* Media.xcassets */,
+				040FCEA82DD63FEB0065B8DC /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -410,6 +416,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 045513CF2CA234840072221A;
 			packageReferences = (
@@ -431,6 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				040FCEAA2DD63FEB0065B8DC /* Localizable.strings in Resources */,
 				045513E32CA234850072221A /* Preview Assets.xcassets in Resources */,
 				041C89212DD3BEA8001D56B3 /* Media.xcassets in Resources */,
 				045513E02CA234850072221A /* Assets.xcassets in Resources */,
@@ -479,6 +487,7 @@
 				045052992DB685A700F2BEE3 /* Sequence+Async.swift in Sources */,
 				041C89242DD3C00E001D56B3 /* Assets+Generated.swift in Sources */,
 				0489434F2DB1813600EC669A /* Network.swift in Sources */,
+				040FCEAC2DD641690065B8DC /* Strings+Generated.swift in Sources */,
 				045052A02DB6862100F2BEE3 /* PreviewDataLoader.swift in Sources */,
 				0476DE362DB40311009ED2A3 /* NSCache+MoonCache.swift in Sources */,
 				0450529B2DB685CB00F2BEE3 /* PreviewNetworkManager.swift in Sources */,
@@ -526,6 +535,17 @@
 			targetProxy = 045513F32CA234850072221A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		040FCEA82DD63FEB0065B8DC /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				040FCEA92DD63FEB0065B8DC /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		045513FA2CA234850072221A /* Debug */ = {
@@ -588,6 +608,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -645,6 +666,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

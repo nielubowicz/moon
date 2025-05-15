@@ -20,7 +20,7 @@ struct MoonApp: App {
                 .modelContainer(for: MoonModel.self)
                 .overlay {
                     if locationManager.currentZipCode.isEmpty {
-                        ProgressView(label: { Text("Loading Location...") })
+                        ProgressView(label: { Text(L10n.loadingLocation) })
                             .progressViewStyle(.circular)
                             .padding(48)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
