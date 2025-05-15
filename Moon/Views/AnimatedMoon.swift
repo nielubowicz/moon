@@ -18,7 +18,9 @@ struct AnimatedMoon: View {
             }
         }
         .onAppear {
-            animateToNext()
+            if models.count > 1 {
+                animateToNext()
+            }
         }
     }
 

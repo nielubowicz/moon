@@ -2,10 +2,6 @@ import SwiftUI
 import SwiftData
 import EventKit
 
-// TODO: Add location picking
-
-// TODO: Remove saved data if location changes
-
 struct ContentView: View {
     @Environment(\.networkProvider) var networkManager
     @Environment(\.calendarManager) var calendarManager
@@ -49,8 +45,8 @@ struct ContentView: View {
                             if let lastPhase = lastViewModels.first?.phase,
                                let currentPhase = viewModels.first?.phase {
                                 transaction.animation =
-                                (lastPhase == 0 && currentPhase >= 0.95) ||
-                                (currentPhase == 0 && lastPhase >= 0.95) ? nil : .easeInOut
+                                (lastPhase >= 0 && lastPhase < currentPhase && currentPhase >= 0.95) ||
+                                (currentPhase >= 0 && currentPhase < lastPhase && lastPhase >= 0.95) ? nil : .easeInOut
                             }
                         }
                 } else {
@@ -142,6 +138,9 @@ struct ContentView: View {
     
     private func clearModels() {
         do {
+            Task {
+                await networkManager.clearCache()
+            }
             viewModels = []
             lastViewModels = []
             try modelContext.delete(model: MoonModel.self)

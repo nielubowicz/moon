@@ -5,12 +5,13 @@ extension Location {
         @Environment(\.dismiss) var dismiss
         
         @Binding var selectedLocation: String
-
+        @State private var localSelectedLocation: String = ""
+        
         @FocusState private var textFieldFocused
         
         var body: some View {
             VStack {
-                TextField("Enter location", text: $selectedLocation)
+                TextField("Enter location", text: $localSelectedLocation)
                     .focused($textFieldFocused)
                     .padding(8)
                     .overlay {
@@ -20,13 +21,16 @@ extension Location {
                     .padding()
 
                 Button("Done") {
+                    selectedLocation = localSelectedLocation
                     textFieldFocused = false
                     dismiss()
                 }
+                .disabled(selectedLocation.count != 5)
             }
             .padding(48)
             .clipShape(RoundedRectangle(cornerRadius: 16))
             .onAppear {
+                localSelectedLocation = selectedLocation
                 textFieldFocused = true
             }
         }

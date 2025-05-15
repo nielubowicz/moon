@@ -15,6 +15,7 @@ extension Network {
         func getToday() async throws -> MoonModel?
         func getMoonModelForDate(_ date: Date) async throws -> MoonModel?
         func getDateRange(from: Date, to: Date) async throws -> [MoonModel]?
+        func clearCache() async
     }
 }
 
@@ -100,6 +101,10 @@ extension Network {
                 dates.forEach { self.cache[$0] = nil }
                 throw error
             }
+        }
+        
+        func clearCache() {
+            cache.removeAllObjects()
         }
     }
 }

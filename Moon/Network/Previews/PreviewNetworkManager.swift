@@ -20,5 +20,7 @@ extension Network {
                     return MoonModel(date: date, phase: phase)
                 }
         }
+        
+        func clearCache() {}
     }
 }
